@@ -28,6 +28,22 @@
   color: #61dafb;
 }
 
+.mydropdowncss:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+}
+
+.shadows .img-thumbnail {
+  padding: 2rem;
+  background-color: white;
+  margin: 2rem;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5),
+    -2px -2px 4px rgba(128, 120, 64, 0.5);
+}
+.shadows:hover .img-thumbnail {
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
