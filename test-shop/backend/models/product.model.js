@@ -3,19 +3,16 @@ const Schema = mongoose.Schema;
 
 const productSchema = new Schema(
   {
-    sku: { type: Number },
-    animal: { type: String },
-    category: { type: String },
-    title: { type: String },
-    description: { type: String },
-    price: { type: Number },
+    sku: Number,
+    animal: String,
+    category: String,
+    title: String,
+    description: String,
+    price: Number,
     status: [String],
-    isFreeShipping: { type: Boolean },
+    isFreeShipping: Boolean,
   },
-  { timestamps: true, versionKey: false },
-  {
-    collection: "products",
-  }
+  { timestamps: true, versionKey: false }
 );
 
 const ProductModel = mongoose.model("Product", productSchema);

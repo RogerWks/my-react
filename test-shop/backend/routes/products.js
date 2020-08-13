@@ -5,34 +5,8 @@ let Product = require("../models/product.model");
 router.get("/", (req, res) => {
   const querry = req.query;
   Product.find(querry)
-    .then((products) => {
-      res.json({
-        confirmation: "succes",
-        data: products,
-      });
-    })
-    .catch((err) => {
-      res.json({
-        confirmation: "fall",
-        message: err.message,
-      });
-    });
-});
-
-router.get("/cat", (req, res) => {
-  Product.find({ animal: "cat" })
-    .then((products) => {
-      res.json({
-        confirmation: "succes",
-        data: products,
-      });
-    })
-    .catch((err) => {
-      res.json({
-        confirmation: "fall",
-        message: err.message,
-      });
-    });
+    .then((products) => res.json(products))
+    .catch((err) => res.status(400).json("Error: " + err));
 });
 
 module.exports = router;

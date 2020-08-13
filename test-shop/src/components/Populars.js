@@ -6,9 +6,9 @@ export default class Populars extends Component {
     super(props);
     this.state = { products: [], filteredproductsData: [] };
   }
-  componentWillMount() {
-    fetch("http://localhost:5000/products")
-      .then((res) => res.json())
+  componentDidMount() {
+    fetch("http://localhost:5000/products?status=popular")
+      .then((response) => response.json())
       .then((data) =>
         this.setState({
           products: data,

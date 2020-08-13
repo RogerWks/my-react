@@ -7,7 +7,7 @@ export default class News extends Component {
     this.state = { products: [], filteredproductsData: [] };
   }
   componentWillMount() {
-    fetch("http://localhost:5000/products?animal=cat")
+    fetch("http://localhost:5000/products?status=new")
       .then((res) => res.json())
       .then((data) =>
         this.setState({
