@@ -20,10 +20,8 @@ connection.once("open", () => {
 });
 
 const productsRouter = require("./routes/products");
-const typeRouter = require("./routes/type");
 
 app.use("/products", productsRouter);
-app.use("/type", typeRouter);
 
 app.use((req, res, next) => {
   const err = new Error("Not foud pages");
