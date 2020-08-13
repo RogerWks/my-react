@@ -1,13 +1,38 @@
-module.exports = (app) => {
-  const router = require("express").Router();
-  let Product = require("../models/product.model");
+const express = require("express");
+const router = express.Router();
+let Product = require("../models/product.model");
 
-  router.route("/").get((req, res) => {
-    Product.find()
-      .then((products) => res.json(products))
-      .catch((err) => res.status(400).json("Error: " + err));
-  });
-  router.get("/:animal", Product.findOne);
+router.get("/", (req, res) => {
+  const querry = req.query;
+  Product.find(querry)
+    .then((products) => {
+      res.json({
+        confirmation: "succes",
+        data: products,
+      });
+    })
+    .catch((err) => {
+      res.json({
+        confirmation: "fall",
+        message: err.message,
+      });
+    });
+});
 
-  app.use("products", router);
-};
+router.get("/cat", (req, res) => {
+  Product.find({ animal: "cat" })
+    .then((products) => {
+      res.json({
+        confirmation: "succes",
+        data: products,
+      });
+    })
+    .catch((err) => {
+      res.json({
+        confirmation: "fall",
+        message: err.message,
+      });
+    });
+});
+
+module.exports = router;

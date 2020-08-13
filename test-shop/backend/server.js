@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-require("./routes/products");
+const bodyParser = require("body-parser");
 
 require("dotenv").config();
 
@@ -9,7 +9,8 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(cors());
-app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 const uri = process.env.MONGODB_URI || "mongodb://localhost:27017/mydb";
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true });
@@ -20,6 +21,14 @@ connection.once("open", () => {
 
 const productsRouter = require("./routes/products");
 const typeRouter = require("./routes/type");
+
+app.use("/products", productsRouter);
+app.use("/type", typeRouter);
+
+app.use((req, res, next) => {
+  const err = new Error("Not foud pages");
+  next(err);
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
