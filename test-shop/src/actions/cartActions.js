@@ -5,7 +5,7 @@ export const addToCart = (items, product) => (dispatch) => {
   let productAlreadyInCart = false;
 
   cartItems.forEach((cp) => {
-    if (cp.id === product.id) {
+    if (cp.sku === product.sku) {
       cp.count += 1;
       productAlreadyInCart = true;
     }
@@ -19,7 +19,7 @@ export const addToCart = (items, product) => (dispatch) => {
 };
 
 export const removeFromCart = (items, product) => (dispatch) => {
-  const cartItems = items.slice().filter((a) => a.id !== product.id);
+  const cartItems = items.slice().filter((a) => a.sku !== product.sku);
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
   dispatch({ type: REMOVE_FROM_CART, payload: { cartItems } });
 };

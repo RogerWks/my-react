@@ -1,14 +1,14 @@
 import { FILTER_PRODUCTS_BY_SIZE, ORDER_PRODUCTS_BY_PRICE } from "./types";
 
-export const filterProducts = (products, size) => (dispatch) => {
+export const filterProducts = (products, type) => (dispatch) => {
   dispatch({
     type: FILTER_PRODUCTS_BY_SIZE,
     payload: {
-      size: size,
+      type: type,
       items:
-        size === ""
+        type === ""
           ? products
-          : products.filter((x) => x.animal.indexOf(size.toUpperCase()) >= 0),
+          : products.filter((x) => x.animal.indexOf(type.toUpperCase()) >= 0),
     },
   });
 };

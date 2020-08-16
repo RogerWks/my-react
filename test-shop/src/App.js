@@ -1,13 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component, Suspense } from "react";
-import { Route, Link, Switch } from "react-router-dom";
-
-import Navbar from "./components/Navbar";
 import logo from "./logo_2.png";
-import { Provider } from "react-redux";
-import Basket from "./components/Basket";
+import { Route, Link, Switch } from "react-router-dom";
 import store from "./store";
+import { Provider } from "react-redux";
 
 const loading = () => (
   <div className="container">
@@ -17,14 +14,12 @@ const loading = () => (
     </button>
   </div>
 );
-
 const Home = React.lazy(() => import("./pages/Home"));
 const All = React.lazy(() => import("./pages/All"));
-const Cat = React.lazy(() => import("./pages/animal/Cat"));
+const Popular = React.lazy(() => import("./pages/Popular"));
+const New = React.lazy(() => import("./pages/New"));
 const Dog = React.lazy(() => import("./pages/animal/Dog"));
-const Bird = React.lazy(() => import("./pages/animal/Bird"));
-const Aqua = React.lazy(() => import("./pages/animal/Aqua"));
-const Promotion1 = React.lazy(() => import("./pages/promotion75%"));
+const Cat = React.lazy(() => import("./pages/animal/Cat"));
 const Pic101 = React.lazy(() => import("./PicPage/Pic101"));
 const Pic102 = React.lazy(() => import("./PicPage/Pic102"));
 const Pic103 = React.lazy(() => import("./PicPage/Pic103"));
@@ -38,24 +33,75 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <div className="">
-          <Navbar />
-
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-sm-6">
+                <br />
+                <img
+                  src={logo}
+                  className="rounded mx-auto d-block"
+                  alt=""
+                  width="460"
+                  height="145"
+                />
+              </div>
+              <div className="col-sm-6 text-left">
+                <div className="container p-3 my-3 rounded border border-info">
+                  <p>
+                    17/4 Village No.5 Bamroongrat Road, Pibulsongkram
+                    Sub-district,
+                    <br />
+                    Muang District, Bangkok, 10400
+                    <br />
+                    Telephone number : 087-XXXX-XXX
+                    <br />
+                    Email : petshop.Test@email.com
+                  </p>
+                </div>
+              </div>
+            </div>
+            <nav className="navbar navbar-expand-lg navbar-dark bg-primary rounded">
+              <a className="navbar-brand" href="/">
+                หน้าหลัก
+              </a>
+              <button
+                className="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#collapsibleNavbar"
+              >
+                <span className="navbar-toggler-icon"></span>
+              </button>
+              <div className="collapse navbar-collapse" id="navbarText">
+                <ul className="navbar-nav mr-auto">
+                  <li className="nav-item">
+                    <Link to="/all" className="nav-link">
+                      สินค้าทั้งหมด
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="#" className="nav-link"></Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="#" className="nav-link"></Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="#" className="nav-link"></Link>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
           <Suspense fallback={loading()}>
             <Switch>
               <Route path="/all">
                 <All />
               </Route>
-              <Route path="/cat">
-                <Cat />
+              <Route path="/popular">
+                <Popular />
               </Route>
-              <Route path="/dog">
-                <Dog />
-              </Route>
-              <Route path="/aqua">
-                <Aqua />
-              </Route>
-              <Route path="/bird">
-                <Bird />
+              <Route path="/new">
+                <New />
               </Route>
               <Route path="/101">
                 <Pic101 />
@@ -78,8 +124,11 @@ export default class App extends Component {
               <Route path="/107">
                 <Pic107 />
               </Route>
-              <Route path="/promotion75">
-                <Promotion1 />
+              <Route path="/dog">
+                <Dog />
+              </Route>
+              <Route path="/cat">
+                <Cat />
               </Route>
               <Route exact path="/">
                 <Home />

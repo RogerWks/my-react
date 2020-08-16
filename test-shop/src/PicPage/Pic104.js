@@ -7,7 +7,7 @@ export default class Pic104 extends Component {
     this.state = { products: [], filteredproductsData: [] };
   }
   componentWillMount() {
-    fetch("http://localhost:8000/products?sku=104")
+    fetch("http://localhost:5000/products?sku=104")
       .then((res) => res.json())
       .then((data) =>
         this.setState({

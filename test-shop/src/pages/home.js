@@ -1,17 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import logo from "../logo_2.png";
 import Basket from "../components/Basket";
-import Filter from "../components/Filter";
 import News from "../components/News";
 import Populars from "../components/Populars";
 
 export default class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { products: [], filteredproductsData: [] };
-  }
   render() {
     return (
       <div className="container-fluid">
@@ -19,7 +13,6 @@ export default class Home extends Component {
           <div className="col-sm-3">
             <br />
             <Basket />
-            <Filter />
             <div className="list-group shadow">
               <li className="list-group-item d-flex justify-content-between align-items-center active">
                 เมนูลัด
@@ -36,7 +29,10 @@ export default class Home extends Component {
               >
                 สินค้าใหม่
               </Link>
-              <Link to="#" className="list-group-item list-group-item-action">
+              <Link
+                to="/popular"
+                className="list-group-item list-group-item-action"
+              >
                 สินค้าขายดี
               </Link>
               <Link
@@ -67,13 +63,81 @@ export default class Home extends Component {
           </div>
           <div className="col-sm-9">
             <br />
-            <img
-              src={logo}
-              className="rounded mx-auto d-block"
-              alt=""
-              width="460"
-              height="145"
-            />
+
+            <div
+              id="carouselExampleIndicators"
+              class="carousel slide"
+              data-ride="carousel"
+            >
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#carouselExampleIndicators"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li
+                  data-target="#carouselExampleIndicators"
+                  data-slide-to="1"
+                ></li>
+                <li
+                  data-target="#carouselExampleIndicators"
+                  data-slide-to="2"
+                ></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    src="https://www.commartthailand.com/wp-content/uploads/2020/01/1140X170-PROMOTION-1.jpg"
+                    class="d-block w-100"
+                    alt="..."
+                    width="460"
+                    height="145"
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="https://hoonhoonbeauty.com/wp-content/uploads/2017/04/AdobeStock_262035364_Promotion-1024x382.jpeg"
+                    class="d-block w-100"
+                    alt="..."
+                    width="460"
+                    height="145"
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="https://www.caggioni.com/media/catalog/category/240_F_119977157_IyhBdygWnp30FWRkKGldoOQ4t8YFo4Sw.jpg"
+                    class="d-block w-100"
+                    alt="..."
+                    width="460"
+                    height="145"
+                  />
+                </div>
+              </div>
+              <a
+                class="carousel-control-prev"
+                href="#carouselExampleIndicators"
+                role="button"
+                data-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#carouselExampleIndicators"
+                role="button"
+                data-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
             <br />
             <h5>
               สินค้าใหม่

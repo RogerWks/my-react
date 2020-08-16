@@ -10,7 +10,7 @@ class Filter extends Component {
         </div>
         <div className="col-md-4">
           <label>
-            Order by
+            ราคา
             <select
               className="form-control"
               value={this.props.sort}
@@ -33,7 +33,7 @@ class Filter extends Component {
             ประเภทของสัตว์เลี้ยง
             <select
               className="form-control"
-              value={this.props.size}
+              value={this.props.type}
               onChange={(event) => {
                 this.props.filterProducts(
                   this.props.products,
@@ -54,7 +54,7 @@ class Filter extends Component {
 const mapStateToProps = (state) => ({
   products: state.products.items,
   filteredProducts: state.products.filteredItems,
-  size: state.products.size,
+  type: state.products.type,
   sort: state.products.sort,
 });
 export default connect(mapStateToProps, { filterProducts, sortProducts })(

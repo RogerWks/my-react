@@ -1,23 +1,9 @@
 import React, { Component } from "react";
-import Dogs from "../../components/Products";
+import Basket from "../components/Basket";
 import { Link } from "react-router-dom";
-import Basket from "../../components/Basket";
+import Populars from "../components/Populars";
 
-export default class Dog extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { products: [], filteredproductsData: [] };
-  }
-  componentWillMount() {
-    fetch("http://localhost:5000/products?animal=dog")
-      .then((res) => res.json())
-      .then((data) =>
-        this.setState({
-          products: data,
-          filteredproductsData: data,
-        })
-      );
-  }
+export default class Popular extends Component {
   render() {
     return (
       <div className="container-fluid">
@@ -155,10 +141,8 @@ export default class Dog extends Component {
               สินค้าใหม่
               <hr />
             </h5>
-            <Dogs
-              products={this.state.filteredproductsData}
-              handleAddToCart={this.handleAddToCart}
-            />
+
+            <Populars />
           </div>
         </div>
         <br />
